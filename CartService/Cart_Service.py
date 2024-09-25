@@ -7,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 import requests
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-# URL of the Product Service change when rendered
-PRODUCT_SERVICE_URL = "http://localhost:5000/products"
+# URL of the Product Service on render
+PRODUCT_SERVICE_URL = "https://productservice-aiqd.onrender.com/products"
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'cart.sqlite')
@@ -70,6 +70,5 @@ def remove_from_cart(user_id, product_id):
         return jsonify({"Error": "Product not found in cart"}), 404
 
 if __name__ == '__main__':
-    # with app.app_context():
-    #     db.create_all()
+    # db.create_all()
     app.run(debug=True, port=5001)
